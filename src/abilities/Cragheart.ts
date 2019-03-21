@@ -6,7 +6,7 @@ export const abilities: Array<Ability> = [
   new Ability(CardIdentifier.official(117), Level.One, 'Crushing Grasp'),
   new Ability(CardIdentifier.official(118), Level.One, 'Avalanche'),
   new Ability(CardIdentifier.official(119), Level.One, 'Rumbling Advance'),
-  new Ability(CardIdentifier.official(120), Level.One, 'Massive Bolder'),
+  new Ability(CardIdentifier.official(120), Level.One, 'Massive Boulder'),
   new Ability(CardIdentifier.official(121), Level.One, 'Backup Ammunition'),
   new Ability(CardIdentifier.official(122), Level.One, 'Rock Tunnel'),
   new Ability(CardIdentifier.official(123), Level.One, 'Unstable Upheaval'),
@@ -33,3 +33,7 @@ export const abilities: Array<Ability> = [
   new Ability(CardIdentifier.official(144), Level.Nine, 'Blind Destruction'),
   new Ability(CardIdentifier.official(145), Level.Nine, 'Pulverize')
 ];
+
+export const abilitiesForLevel = (level: Level): Array<Ability> => {
+  return abilities.filter(it => it.level === level);
+};

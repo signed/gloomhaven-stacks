@@ -4,6 +4,8 @@ import { NoProps, NoState } from 'lang/react';
 import { BattleGoal, officialBattleGoals, satireGamingBattleGoals } from 'battlegoals/battleGoals';
 import BattleGoalCard from 'battlegoals/BattleGoalCard';
 import { CSSProperties } from 'react';
+import { Level, scanUrlFor } from 'abilities/Ability';
+import { abilitiesForLevel } from 'abilities/Cragheart';
 import './style.css';
 
 interface ScanFilenameLookupTable {
@@ -44,7 +46,7 @@ function urlToScanFor(it: BattleGoal) {
   return 'empty';
 }
 
-class Gallery extends React.Component<NoProps, NoState> {
+class BattleGoalGallery extends React.Component<NoProps, NoState> {
   render(): React.ReactNode {
     const allBattleGoals = officialBattleGoals.concat(satireGamingBattleGoals);
     const style = {
@@ -70,6 +72,39 @@ class Gallery extends React.Component<NoProps, NoState> {
     return <div style={style}>
       {cards}
     </div>;
+  }
+}
+
+class AbilityGallery extends React.Component<NoProps, NoState> {
+  render(): React.ReactNode {
+    return <React.Fragment>
+      {this.cardsFor(Level.One)}
+      {this.cardsFor(Level.X)}
+      {this.cardsFor(Level.Two)}
+      {this.cardsFor(Level.Three)}
+      {this.cardsFor(Level.Four)}
+      {this.cardsFor(Level.Five)}
+      {this.cardsFor(Level.Six)}
+      {this.cardsFor(Level.Seven)}
+      {this.cardsFor(Level.Eight)}
+      {this.cardsFor(Level.Nine)}
+    </React.Fragment>;
+  }
+
+  private cardsFor(level: Level): React.ReactNode {
+    return <div>
+      <div>{level}</div>
+      {abilitiesForLevel(level).map(it => <img key={it.cardIdentifier.asString()} src={scanUrlFor(it)} alt={it.title}/>)}
+    </div>;
+  }
+}
+
+class Gallery extends React.Component<NoProps, NoState> {
+  render(): React.ReactNode {
+    return <React.Fragment>
+      <AbilityGallery/>
+      <BattleGoalGallery/>
+    </React.Fragment>;
   }
 }
 
