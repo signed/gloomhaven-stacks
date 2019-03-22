@@ -1,6 +1,27 @@
 import CardIdentifier from 'cards/CardIdentifier';
 import { replaceAll } from 'lang/strings';
 
+export enum Element {
+  Fire = 'Fire',
+  Ice = 'Ice',
+  Air = 'Air',
+  Earth = 'Earth',
+  Light = 'Light',
+  Dark = 'Dark'
+}
+
+export class TopAction {
+
+}
+
+export class BottomAction {
+
+}
+
+export class Initiative {
+
+}
+
 export enum Level {
   One = '1',
   Two = '2',
