@@ -19,6 +19,13 @@ export class BottomAction {
 }
 
 export class Initiative {
+  static of(value: number) {
+    return new Initiative(value);
+  }
+
+  constructor(readonly value: number) {
+
+  }
 
 }
 
@@ -50,6 +57,7 @@ export const scanUrlFor = (ability: Ability): string => {
 export default class Ability {
   constructor(readonly cardIdentifier: CardIdentifier,
               readonly level: Level,
+              readonly initiative: Initiative,
               readonly title: string) {
   }
 }
